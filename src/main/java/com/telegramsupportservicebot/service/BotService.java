@@ -1,7 +1,6 @@
-package com.telegramsupportservicebot.controller;
+package com.telegramsupportservicebot.service;
 
 import com.telegramsupportservicebot.dto.request.MessageRequestDto;
-import com.telegramsupportservicebot.service.DatabaseService;
 import com.telegramsupportservicebot.service.impl.DatabaseServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class BotController extends TelegramLongPollingBot {
+public class BotService extends TelegramLongPollingBot {
     private final DatabaseService databaseService;
 
     @Override
@@ -50,7 +49,7 @@ public class BotController extends TelegramLongPollingBot {
         }
         try {
             log.info("Registering bot...");
-            telegramBotsApi.registerBot(new BotController(new DatabaseServiceImpl()));
+            telegramBotsApi.registerBot(new BotService(new DatabaseServiceImpl()));
             log.info("Telegram bot is ready to accept updates from user.....");
         } catch (TelegramApiException e) {
             log.error("Failed to register bot(check internet connection/bot token" +

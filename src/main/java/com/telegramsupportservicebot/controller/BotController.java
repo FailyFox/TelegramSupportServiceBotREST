@@ -1,6 +1,5 @@
 package com.telegramsupportservicebot.controller;
 
-import com.telegramsupportservicebot.TelegramSupportServiceBotRESTApplication;
 import com.telegramsupportservicebot.dto.request.MessageRequestDto;
 import com.telegramsupportservicebot.service.DatabaseService;
 import lombok.RequiredArgsConstructor;

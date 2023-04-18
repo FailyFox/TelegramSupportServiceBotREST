@@ -1,17 +1,15 @@
 package com.telegramsupportservicebot.service.impl;
 
-import com.telegramsupportservicebot.TelegramSupportServiceBotRESTApplication;
 import com.telegramsupportservicebot.service.DatabaseService;
+import lombok.extern.slf4j.Slf4j;
 import org.postgresql.util.PGobject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
 
 @Service
+@Slf4j
 public class DatabaseServiceImpl implements DatabaseService {
-    private static final Logger log = LoggerFactory.getLogger(TelegramSupportServiceBotRESTApplication.class);
 
     @Override
     public void saveMessage(Long userId, String userFirstName, String userMessage) {

@@ -9,5 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class MessageResponseDto {
     private Integer id;
+    private String telegramID;
+    private String firstName;
     private String message;
 }

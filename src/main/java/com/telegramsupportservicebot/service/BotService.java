@@ -26,13 +26,13 @@ public class BotService extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         if(update.hasMessage() && update.getMessage().hasText()) {
-            Long userId = update.getMessage().getChatId();
+            String telegramID = update.getMessage().getChatId().toString();
             String userFirstName = update.getMessage().getFrom().getFirstName();
             String userMessage = update.getMessage().getText();
 
-            log.info("ID: {}, Name: {}, Message: {}", userId, userFirstName, userMessage);
+            log.info("ID: {}, Name: {}, Message: {}", telegramID, userFirstName, userMessage);
 
-            databaseService.saveMessage(userId, userFirstName, userMessage);
+            databaseService.saveMessage(telegramID, userFirstName, userMessage);
         }
         else {
             log.warn("Unexpected update from user");

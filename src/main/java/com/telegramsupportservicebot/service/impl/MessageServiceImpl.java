@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class MessageServiceImpl implements MessageService {
     private final MessageRepository messageRepository;
     private final MessageResponseMapper messageResponseMapper;
+
     @Override
     public MessageResponseDto getMessage(int id) {
         return messageRepository.findById(id)

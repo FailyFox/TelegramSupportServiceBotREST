@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import java.sql.*;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class DatabaseServiceImpl implements DatabaseService {
-    @Autowired
-    private MessageRepository messageRepository;
+    private final MessageRepository messageRepository;
     @Override
     public void saveMessage(String telegramID, String userFirstName, String userMessage) {
         Message message = new Message();

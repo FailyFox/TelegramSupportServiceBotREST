@@ -17,9 +17,9 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "telegramid", nullable = false)
+    @Column(name = "telegram_id", nullable = false)
     private String telegramID;
-    @Column(name = "firstname", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
     @Column(name = "message", nullable = false)
     private String message;

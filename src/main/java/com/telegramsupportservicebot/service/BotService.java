@@ -1,6 +1,7 @@
 package com.telegramsupportservicebot.service;
 
 import com.telegramsupportservicebot.dto.request.MessageRequestDto;
+import com.telegramsupportservicebot.repository.MessageRepository;
 import com.telegramsupportservicebot.service.impl.DatabaseServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +50,7 @@ public class BotService extends TelegramLongPollingBot {
         }
         try {
             log.info("Registering bot...");
-            telegramBotsApi.registerBot(new BotService(new DatabaseServiceImpl()));
+            telegramBotsApi.registerBot(this);
             log.info("Telegram bot is ready to accept updates from user.....");
         } catch (TelegramApiException e) {
             log.error("Failed to register bot(check internet connection/bot token" +

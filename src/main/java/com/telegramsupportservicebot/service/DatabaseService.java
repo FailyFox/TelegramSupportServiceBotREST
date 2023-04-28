@@ -1,5 +1,7 @@
 package com.telegramsupportservicebot.service;
 
+import com.telegramsupportservicebot.model.Message;
+
 public interface DatabaseService {
-    void saveMessage(String telegramID, String userFirstName, String userMessage);
+    void saveMessage(Message message);
 }

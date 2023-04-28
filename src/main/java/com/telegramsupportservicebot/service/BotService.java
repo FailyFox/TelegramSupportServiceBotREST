@@ -1,8 +1,7 @@
 package com.telegramsupportservicebot.service;
 
 import com.telegramsupportservicebot.dto.request.MessageRequestDto;
-import com.telegramsupportservicebot.repository.MessageRepository;
-import com.telegramsupportservicebot.service.impl.DatabaseServiceImpl;
+import com.telegramsupportservicebot.model.Message;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -27,13 +26,14 @@ public class BotService extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         if(update.hasMessage() && update.getMessage().hasText()) {
-            String telegramID = update.getMessage().getChatId().toString();
-            String userFirstName = update.getMessage().getFrom().getFirstName();
-            String userMessage = update.getMessage().getText();
+            Message message = new Message();
+            message.setTelegramID(update.getMessage().getChatId().toString());
+            message.setFirstName(update.getMessage().getFrom().getFirstName());
+            message.setMessage(update.getMessage().getText());
 
-            log.info("ID: {}, Name: {}, Message: {}", telegramID, userFirstName, userMessage);
+            log.info("ID: {}, Name: {}, Message: {}", message.getId(), message.getFirstName(), message.getMessage());
 
-            databaseService.saveMessage(telegramID, userFirstName, userMessage);
+            databaseService.saveMessage(message);
         }
         else {
             log.warn("Unexpected update from user");

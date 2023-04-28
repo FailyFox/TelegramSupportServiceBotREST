@@ -1,6 +1,5 @@
 package com.telegramsupportservicebot.model;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

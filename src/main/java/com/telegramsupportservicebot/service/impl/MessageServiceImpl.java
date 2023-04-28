@@ -29,7 +29,7 @@ public class MessageServiceImpl implements MessageService {
     public List<MessageResponseDto> getAllMessages() {
         return messageRepository.findAll()
                 .stream()
-                .sorted(Comparator.comparing(Message::getMessage))
+                .sorted(Comparator.comparing(Message::getTelegramID))
                 .map(messageResponseMapper::toDto)
                 .collect(Collectors.toList());
     }

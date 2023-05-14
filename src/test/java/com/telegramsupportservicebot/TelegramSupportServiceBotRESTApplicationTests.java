@@ -8,4 +8,10 @@ class TelegramSupportServiceBotRESTApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+
+	@Test
+	void mainMethodRuns() {
+		String[] args = {};
+		TelegramSupportServiceBotRESTApplication.main(args);
+	}
 }
